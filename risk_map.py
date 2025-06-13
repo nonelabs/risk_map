@@ -24,9 +24,8 @@ affine     = seg.affine
 header     = seg.header
 m, s = ndimage.label(seg_data)
 
-seg_data = np.zeros(seg_data.shape)
-tumour = (seg_data == 2).astype(np.uint8)          
-cst    = (seg_data == 1).astype(np.uint8)          
+tumour = (m == 2).astype(np.uint8)          
+cst    = (m == 1).astype(np.uint8)          
 
 dist_ds_mm = ndimage.distance_transform_edt(
     ~cst.astype(bool),          
