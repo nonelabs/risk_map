@@ -22,6 +22,8 @@ seg   = resample_to_output(nib.load(segfile),
 seg_data   = seg.get_fdata().astype(np.float32)
 affine     = seg.affine
 header     = seg.header
+
+# label image
 m, s = ndimage.label(seg_data)
 
 tumour = (m == 2).astype(np.uint8)          
